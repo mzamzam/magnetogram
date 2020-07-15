@@ -1,13 +1,4 @@
-# Accessing, downloading, and analyzing SHARP magnetogram DEFINITIVE data in CEA Coordinate. 
-# Calculate some physical parameters derived from SHARP data and plot their distributions and contour:
-# Vertical current, potential field components, proxy of magnetic energy, and shear angle of horizontal field.
-# Written by Johan Muhamad (LAPAN) June 2019 
-# at Jupyter Notebook
-# yang baru di v2.0 : fits otomatis dihapus, otomatis download data, gambar dibuat dengan fungsi (M. Zamzam (LAPAN) July 2019)
-# v2.1  (Johan Muhamad (LAPAN) August 2019): differensial untuk menghitung arus diselesaikan dengan 2nd order accuracy - center finite difference (5 point stencils) 
-# gradien medan magnet dan netralitas arus dihitung, total (summation) beberapa parameter dihitung dan dimasukkan ke satu file output,
-# parameter-parameter dihitung untuk daerah lokal (bisa 2 daerah yang berbeda sekaligus).
-# v2.3  (MZN 2019) download, analysis, and plot data di file terpisah
+# diadaptasi dari JSD-analysis_v2.3  (MZN 2019) download, analysis, and plot data di file terpisah
 
 from __future__ import division, print_function
 import os.path

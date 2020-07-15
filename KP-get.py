@@ -1,4 +1,4 @@
-# v2.3  (MZN 2019) download, analysis, and plot data di file terpisah
+# diadaptasi dri JSD-get_v2.3  (MZN 2019) download, analysis, and plot data di file terpisah
 
 import os.path
 import numpy as np
