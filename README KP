@@ -12,6 +12,7 @@ README
     Di dalam folder AR tersebut akan ada folder lagi bernama 'Fits_xx' dan 'meta_xx', xx menunjukkan tanggal.
 #8 Isi folder 'Fits_xx' adalah file fits berjumlah 69 data. Kalau kurang berarti ada file fits yang tidak ada.
 #9 Isi folder 'meta_xx' adalah file metadata fits dalam format .csv. Totalnya ada 4 file.
-
+#10 Data fits yang diunduh 3 hari setelah dan sebelum puncak flare (data tanggal & waktu di excel).
+    Satu hari hanya empat data fits yang diunduh yaitu 0,6,12,18 jam.
 @mzn
 17072020
