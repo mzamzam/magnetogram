@@ -1,0 +1,17 @@
+README
+
+#1 Buka 'KP-get.py'
+#2 Ubah variabel 'wdir' (baris ke-10) sesuai lokasi tempat 'KP-get.py' disimpan.
+#3 Pastikan dalam folder yang sama dengan 'KP-get.py' ada file excel ('KP-data_lengkap.xlsx').
+#4 Ubah variabel 'urutan' (baris ke-17) sesuai posisi baris dalam file excel yang diinginkan.
+   contoh: urutan = 11 artinya data baris ke-13 dalam file excel.
+           urutan = 0 artinya data baris ke-2 dalam file excel.
+#5 Jalankan 'KP-get.py'. Jika benar, akan muncul tulisan 'hmi.sharp_cea_720s[xxxx][yyyy.mm.dd_HH:MM:SS_TAI] @ zz.zzzz deg'.
+#6 Program selesai berjalan jika muncul tulisan 'time consume:  H:MM:SS.fff'.
+#7 Hasilnya akan muncul folder bernama nomor AR di dalam folder tempat file python dan excel berada.
+    Di dalam folder AR tersebut akan ada folder lagi bernama 'Fits_xx' dan 'meta_xx', xx menunjukkan tanggal.
+#8 Isi folder 'Fits_xx' adalah file fits berjumlah 69 data. Kalau kurang berarti ada file fits yang tidak ada.
+#9 Isi folder 'meta_xx' adalah file metadata fits dalam format .csv. Totalnya ada 4 file.
+
+@mzn
+17072020
