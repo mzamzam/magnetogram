@@ -14,9 +14,9 @@ def tanggal_jsoc(i):
     date = datetime.strptime(flare.loc[i]['Tanggal & Waktu'],'%Y-%m-%d T%H:%M')
     tanggal = date.strftime('%Y.%m.%d_%H:%M:%S_TAI')
     return tanggal,date
-
+urutan = 11
+ar = int(flare.loc[urutan]['No.NOAA'])
 series = 'hmi.sharp_cea_720s'
-ar = 11402
 sharp_noaa = pd.read_csv('http://jsoc.stanford.edu/doc/data/hmi/harpnum_to_noaa/all_harps_with_noaa_ars.txt',sep=' ',index_col='HARPNUM')
 sharpnum =  sharp_noaa[sharp_noaa['NOAA_ARS'].str.contains(str(ar))].index[0]
 segments = ['Bp', 'Bt', 'Br']
@@ -34,7 +34,7 @@ def path(chapter,time):
     return(nama_folder)
 
 def unduh_fits(j,z):
-    time = (tanggal_jsoc(j)[1] - timedelta(hours = z)).strftime('%Y.%m.%d_%H:%M:%S_TAI')
+    time = (tanggal_jsoc(j)[1] - timedelta(hours = int(z))).strftime('%Y.%m.%d_%H:%M:%S_TAI')
     k = c.query('%s[%d][%s]' % (series, sharpnum,time), key=kwlist, rec_index=True)
     #Find the record that is clostest to the central meridian, by using the minimum of the patch's absolute longitude:
     rec_cm = k.LON_FWT.idxmin()
@@ -61,5 +61,9 @@ def unduh_fits(j,z):
         r = c.export(exp_query)
         r.download(path('Fits',time))
 
+for m in [1,-1]:
+    for i in np.arange(0,73*m,6*m):
+        try: unduh_fits(urutan,i)
+        except KeyError: continue
 
 print('time consume: ',datetime.now()-start_time)
