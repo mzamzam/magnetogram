@@ -22,7 +22,7 @@ def ar_sharpnum(i):
     ar = int(flare.loc[i]['No.NOAA'])
     sharpnum = sharp_noaa[sharp_noaa['NOAA_ARS'].str.contains(str(ar))].index[0]
     return ar,sharpnum
-x = 0
+x = 1
 for y in np.arange(-3,4,1):
     ar = ar_sharpnum(x)[0]
     sharpnum = ar_sharpnum(x)[1]
@@ -597,7 +597,7 @@ for y in np.arange(-3,4,1):
                 'Arus_total': sumJz_tot, 'Arus_lokal': sumJz_loc, 'Helisitas_lokal': sumJzBloc,
                 'Rasio_netralitas_arus': ratc}
         df = pd.DataFrame([data],columns=['Waktu', 'Energi_total', 'Energi_Lokal', 'Arus_total', 'Arus_lokal', 'Helisitas_lokal','Rasio_netralitas_arus'])
-        df.to_csv('{}/output_1.csv'.format(str(ar)), mode='a', index=False, header=False)
+        df.to_csv('{}/output_1.csv'.format(str(ar)), mode='a', index=False)
 
         # file1 = open(str(ar)+'/OUTPUT_1.txt',"a+")
         # file1.write(time_cm_str_form+' '+str(sumexc_erg)+' '+ str(sumerg_loc)+' '+ str(sumJz_tot)+' '+ str(sumJz_loc)+' '+ str(sumJzBloc)+' '+ str(ratc)+'\n')
@@ -689,7 +689,7 @@ for y in np.arange(-3,4,1):
         data = {'Waktu': time_cm_str_form, 'Energi_total': sumexc_erg, 'Energi_Lokal': sumerg_loc,
                 'Arus_total': sumJz_tot, 'Arus_lokal': sumJz_loc, 'Helisitas_lokal': sumJzBloc,'Rasio_netralitas_arus':ratc}
         df = pd.DataFrame([data], columns=['Waktu', 'Energi_total', 'Energi_Lokal','Arus_total', 'Arus_lokal', 'Helisitas_lokal','Rasio_netralitas_arus'])
-        df.to_csv('{}/output_2.csv'.format(str(ar)), mode='a', index=False, header=False)
+        df.to_csv('{}/output_2.csv'.format(str(ar)), mode='a', index=False)
         # file2 = open(str(ar)+'/OUTPUT_2.txt',"a+")
         # file2.write(time_cm_str_form+' '+str(sumexc_erg)+' '+ str(sumerg_loc)+' '+ str(sumJz_tot)+' '+ str(sumJz_loc)+' '+ str(sumJzBloc)+' '+ str(ratc)+'\n')
         # file2.close()
