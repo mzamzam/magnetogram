@@ -16,3 +16,16 @@ README
     Satu hari hanya empat data fits yang diunduh yaitu 0,6,12,18 jam.
 @mzn
 17072020
+
+README Analysis
+#11 Unduh Kp-analysis_v2. Pindahkan ke folder yang ada file 'KP-get.py'.
+#12 Ubah variabel 'wdir' (baris ke-16) sesuai lokasi file 'Kp-analysis_v2' disimpan.
+#13 Pastikan dalam folder yang sama ada file excel ('KP-data_lengkap.xlsx').
+#14 Ubah variabel x (baris ke-25) sesuai posisi baris dalam file excel yang diinginkan.
+    contoh: urutan = 11 artinya data baris ke-13 dalam file excel.
+           urutan = 0 artinya data baris ke-2 dalam file excel.
+#15 Jalankan program. Hasilnya, didalam folder AR akan ada file 'output_1.csv', 'output_2.csv' dan folder 'YYYY_MM'.
+#16 Di dalam folder 'YYYY_MM' akan ada folder 'Bz', 'vertical_current_contour', 'shear_angle_degree', dan 'free_energy'.
+#17 Program akan selesai setelah kurang lebih 16 menit.
+@mzn
+25072020
