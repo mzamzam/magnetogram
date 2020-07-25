@@ -13,7 +13,7 @@ def tanggal_jsoc(i):
     date = datetime.strptime(flare.loc[i]['Tanggal & Waktu'],'%Y-%m-%d T%H:%M')
     tanggal = date.strftime('%Y.%m.%d_%H:%M:%S_TAI')
     return tanggal,date
-urutan = 1
+urutan = 40
 ar = int(flare.loc[urutan]['No.NOAA'])
 series = 'hmi.sharp_cea_720s'
 sharp_noaa = pd.read_csv('http://jsoc.stanford.edu/doc/data/hmi/harpnum_to_noaa/all_harps_with_noaa_ars.txt',sep=' ',index_col='HARPNUM')
