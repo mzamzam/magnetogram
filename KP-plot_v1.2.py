@@ -7,11 +7,28 @@ from matplotlib import dates
 
 import sunpy
 from sunpy.time import TimeRange
-import datetime
+from datetime import datetime, timedelta
 from matplotlib.ticker import AutoMinorLocator
 
-aregion = 12017
-flare_class = 'C1'
+wdir = r'C:\Users\Stargazers\PycharmProjects\magnetogram'
+flare = pd.read_excel('KP-data_lengkap.xlsx')
+sharp_noaa = pd.read_csv('http://jsoc.stanford.edu/doc/data/hmi/harpnum_to_noaa/all_harps_with_noaa_ars.txt',sep=' ',index_col='HARPNUM')
+def ar_sharpnum(i):
+    ar = int(flare.loc[i]['No.NOAA'])
+    sharpnum = sharp_noaa[sharp_noaa['NOAA_ARS'].str.contains(str(ar))].index[0]
+    return ar,sharpnum
+aregion = ar_sharpnum(0)[0]
+def date_time(x, y):
+    date = datetime.strptime(flare.loc[x]['Tanggal & Waktu'], '%Y-%m-%d T%H:%M')
+    date_str = date.strftime('%Y.%m.%d_%H:%M:%S_TAI')
+    time = date - timedelta(days=int(y))
+    time_str = time.strftime('%Y.%m.%d_%H:%M:%S_TAI')
+    waktu = time.strftime('%Y.%m.%d')
+    return date_str, time, time_str, waktu
+time = date_time(0,3)[3]
+time2 = date_time(0,-3)[3]
+# aregion = 12017
+flare_class = 'X1'
 time = '2014.03.27'
 time2 = '2014.03.29'
 t_init=0 #start time (in hour UT t_init:00:00)
@@ -20,7 +37,6 @@ t_step=1 #time step (hour +01:00:00 increment)
 time_str = (pd.to_datetime(time)).strftime('%Y-%m-%d')
 time_str2 = (pd.to_datetime(time2)).strftime('%Y-%m-%d')
 num = 2 # untuk nama file output, hanya ada 1 dan 2
-
 
 def path_folder(chapter,waktu):
     nama_folder = str(aregion)+'/'+chapter+'_'+str(waktu)+'/'

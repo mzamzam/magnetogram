@@ -9,6 +9,8 @@ from sunpy.timeseries import TimeSeries
 from sunpy.time import TimeRange, parse_time
 from sunpy.net import hek, Fido, attrs as a
 
+wdir = r'C:\Users\Stargazers\PycharmProjects\magnetogram'
+flare = pd.read_excel('KP-data_lengkap.xlsx')
 ar = 12017
 flare = 'C'
 time = '2014.03.27'

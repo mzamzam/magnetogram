@@ -14,7 +14,6 @@ import pandas as pd
 from datetime import datetime,timedelta
 wdir = r'C:\Users\Stargazers\PycharmProjects\magnetogram'
 flare = pd.read_excel('KP-data_lengkap.xlsx')
-series = 'hmi.sharp_cea_720s'
 segments = ['Bp', 'Bt', 'Br']
 sharp_noaa = pd.read_csv('http://jsoc.stanford.edu/doc/data/hmi/harpnum_to_noaa/all_harps_with_noaa_ars.txt',sep=' ',index_col='HARPNUM')
 # sharp_noaa = pd.read_csv('{}/harps.txt'.format(wdir),sep= ' ',index_col='HARPNUM')

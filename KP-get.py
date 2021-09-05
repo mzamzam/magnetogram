@@ -7,13 +7,12 @@ import pandas as pd
 from datetime import datetime, timedelta
 start_time = datetime.now()
 wdir = r'C:\Users\Stargazers\PycharmProjects\magnetogram'
-
-flare = pd.read_excel('KP-data_lengkap.xlsx')
+flare = pd.read_excel('{}\KP-data_lengkap.xlsx'.format(wdir))
 def tanggal_jsoc(i):
     date = datetime.strptime(flare.loc[i]['Tanggal & Waktu'],'%Y-%m-%d T%H:%M')
     tanggal = date.strftime('%Y.%m.%d_%H:%M:%S_TAI')
     return tanggal,date
-urutan = 40
+urutan = 0
 ar = int(flare.loc[urutan]['No.NOAA'])
 series = 'hmi.sharp_cea_720s'
 sharp_noaa = pd.read_csv('http://jsoc.stanford.edu/doc/data/hmi/harpnum_to_noaa/all_harps_with_noaa_ars.txt',sep=' ',index_col='HARPNUM')
@@ -32,7 +31,7 @@ def unduh_fits(j,z):
     #Find the record that is clostest to the central meridian, by using the minimum of the patch's absolute longitude:
     rec_cm = k.LON_FWT.idxmin()
     t_cm = drms.to_datetime(k.T_REC[rec_cm])
-    print(rec_cm, '@', k.LON_FWT[rec_cm], 'deg')
+    # print(rec_cm, '@', k.LON_FWT[rec_cm], 'deg')
     t_cm_str = t_cm.strftime('%Y%m%d_%H%M%S_TAI')
     os.chdir(wdir)
     k.to_csv(path('meta',time)+'/k_'+t_cm_str[9:15]+'.csv',index_label='query')
@@ -47,12 +46,16 @@ def unduh_fits(j,z):
         if not os.path.exists(v):
             os.chdir(wdir)
             download_segments.append(w)
+            print('{} terunduh.'.format(v))
+        else: print('{} sudah ada di folder.'.format(v))
     if download_segments:
         exp_query = '%s{%s}' % (rec_cm, ','.join(download_segments))
         r = c.export(exp_query)
         r.download(path('Fits',time))
-for m in [1,-1]:
-    for i in np.arange(0,73*m,6*m):
-        try: unduh_fits(urutan,i)
-        except KeyError: continue
+# for m in [1,-1]:
+#     for i in np.arange(0,6*m,1*m):
+#         try: unduh_fits(urutan,i)
+#         except KeyError:
+#             print('{} tidak ada data.'.format(str(i)))
+#             continue
 print('time consume: ',datetime.now()-start_time)
